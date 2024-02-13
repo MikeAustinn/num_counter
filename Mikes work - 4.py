@@ -2,10 +2,10 @@
 Beginner Problem: Write a function that searches all words in a text file and returns the sum of all integer values.
 
 File Name: sum_of_integers.py
-Name:      ?
+Name:      Michael Austin
 Course:    CPTR 141
 """
-
+"""Any File you want to use """
 file_name = "numbers.txt"
 
 print(
