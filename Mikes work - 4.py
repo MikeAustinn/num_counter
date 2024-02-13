@@ -5,26 +5,33 @@ File Name: sum_of_integers.py
 Name:      Michael Austin
 Course:    CPTR 141
 """
-"""Any File you want to use """
-file_name = "numbers.txt"
-
-print(
-    "The sum of numbers in {} is {}".format(
-        file_name, sum_of_integers.sum_of_integers(file_name)
-    )
-)
 
 def sum_of_integers(file_name):
     with open(file_name, "r") as file:
-        rows = file.read().splitlines()
-
-    total_sum = 0
-    for r in rows:
-        data = r.split(" ")
-        for d in data:
-            try:
-                num = int(d)
-                total_sum += num 
-            except Exception as e:
-                continue
+        content = file.read()
+        
+    numbers = []
+    current_number = ''
+    
+    for char in content:
+        if char.isdigit():
+            current_number += char
+        elif current_number:
+            numbers.append(int(current_number))
+            current_number = ''
+    
+    # Append the last number if it exists
+    if current_number:
+        numbers.append(int(current_number))
+    
+    total_sum = sum(numbers)
     return total_sum
+
+"""Any File you want to use """
+file_name = "numbers.txt"
+print(
+    "The sum of numbers in {} is {}".format(
+        file_name, sum_of_integers(file_name)
+    )
+)
+
